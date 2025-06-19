@@ -31,7 +31,7 @@ class CategorizeAudioResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/millionways-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/mwe1/millionways-python-sdk#accessing-raw-response-data-eg-headers
         """
         return CategorizeAudioResourceWithRawResponse(self)
 
@@ -40,7 +40,7 @@ class CategorizeAudioResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/millionways-python#with_streaming_response
+        For more information, see https://www.github.com/mwe1/millionways-python-sdk#with_streaming_response
         """
         return CategorizeAudioResourceWithStreamingResponse(self)
 
@@ -145,7 +145,7 @@ class AsyncCategorizeAudioResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/millionways-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/mwe1/millionways-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncCategorizeAudioResourceWithRawResponse(self)
 
@@ -154,7 +154,7 @@ class AsyncCategorizeAudioResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/millionways-python#with_streaming_response
+        For more information, see https://www.github.com/mwe1/millionways-python-sdk#with_streaming_response
         """
         return AsyncCategorizeAudioResourceWithStreamingResponse(self)
 
