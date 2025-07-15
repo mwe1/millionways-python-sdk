@@ -85,7 +85,6 @@ pip install millionways[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
-import os
 import asyncio
 from millionways import DefaultAioHttpClient
 from millionways import AsyncMillionways
@@ -93,7 +92,7 @@ from millionways import AsyncMillionways
 
 async def main() -> None:
     async with AsyncMillionways(
-        api_key=os.environ.get("MILLIONWAYS_API_KEY"),  # This is the default and can be omitted
+        api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
         get_call = await client.get_call.retrieve(
