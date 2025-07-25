@@ -1,6 +1,7 @@
 # Millionways Python API library
 
-[![PyPI version](<https://img.shields.io/pypi/v/millionways.svg?label=pypi%20(stable)>)](https://pypi.org/project/millionways/)
+<!-- prettier-ignore -->
+[![PyPI version](https://img.shields.io/pypi/v/millionways.svg?label=pypi%20(stable))](https://pypi.org/project/millionways/)
 
 The Millionways Python library provides convenient access to the Millionways REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -69,6 +70,40 @@ asyncio.run(main())
 ```
 
 Functionality between the synchronous and asynchronous clients is otherwise identical.
+
+### With aiohttp
+
+By default, the async client uses `httpx` for HTTP requests. However, for improved concurrency performance you may also use `aiohttp` as the HTTP backend.
+
+You can enable this by installing `aiohttp`:
+
+```sh
+# install from PyPI
+pip install millionways[aiohttp]
+```
+
+Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
+
+```python
+import asyncio
+from millionways import DefaultAioHttpClient
+from millionways import AsyncMillionways
+
+
+async def main() -> None:
+    async with AsyncMillionways(
+        api_key="My API Key",
+        http_client=DefaultAioHttpClient(),
+    ) as client:
+        get_call = await client.get_call.retrieve(
+            call_id="REPLACE_ME",
+            api_key="REPLACE_ME",
+        )
+        print(get_call.call)
+
+
+asyncio.run(main())
+```
 
 ## Using types
 
