@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestSummarize:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Millionways) -> None:
         summarize = client.summarize.create(
@@ -25,7 +25,7 @@ class TestSummarize:
         )
         assert_matches_type(SummarizeCreateResponse, summarize, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Millionways) -> None:
         summarize = client.summarize.create(
@@ -35,7 +35,7 @@ class TestSummarize:
         )
         assert_matches_type(SummarizeCreateResponse, summarize, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Millionways) -> None:
         response = client.summarize.with_raw_response.create(
@@ -47,7 +47,7 @@ class TestSummarize:
         summarize = response.parse()
         assert_matches_type(SummarizeCreateResponse, summarize, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Millionways) -> None:
         with client.summarize.with_streaming_response.create(
@@ -67,7 +67,7 @@ class TestAsyncSummarize:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncMillionways) -> None:
         summarize = await async_client.summarize.create(
@@ -75,7 +75,7 @@ class TestAsyncSummarize:
         )
         assert_matches_type(SummarizeCreateResponse, summarize, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncMillionways) -> None:
         summarize = await async_client.summarize.create(
@@ -85,7 +85,7 @@ class TestAsyncSummarize:
         )
         assert_matches_type(SummarizeCreateResponse, summarize, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncMillionways) -> None:
         response = await async_client.summarize.with_raw_response.create(
@@ -97,7 +97,7 @@ class TestAsyncSummarize:
         summarize = await response.parse()
         assert_matches_type(SummarizeCreateResponse, summarize, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncMillionways) -> None:
         async with async_client.summarize.with_streaming_response.create(
