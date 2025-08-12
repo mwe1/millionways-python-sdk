@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestChatStream:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_generate_response(self, client: Millionways) -> None:
         chat_stream = client.chat_stream.generate_response(
@@ -25,7 +25,7 @@ class TestChatStream:
         )
         assert_matches_type(ChatStreamGenerateResponseResponse, chat_stream, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_generate_response_with_all_params(self, client: Millionways) -> None:
         chat_stream = client.chat_stream.generate_response(
@@ -72,7 +72,7 @@ class TestChatStream:
         )
         assert_matches_type(ChatStreamGenerateResponseResponse, chat_stream, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_generate_response(self, client: Millionways) -> None:
         response = client.chat_stream.with_raw_response.generate_response(
@@ -84,7 +84,7 @@ class TestChatStream:
         chat_stream = response.parse()
         assert_matches_type(ChatStreamGenerateResponseResponse, chat_stream, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_generate_response(self, client: Millionways) -> None:
         with client.chat_stream.with_streaming_response.generate_response(
@@ -100,9 +100,11 @@ class TestChatStream:
 
 
 class TestAsyncChatStream:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_generate_response(self, async_client: AsyncMillionways) -> None:
         chat_stream = await async_client.chat_stream.generate_response(
@@ -110,7 +112,7 @@ class TestAsyncChatStream:
         )
         assert_matches_type(ChatStreamGenerateResponseResponse, chat_stream, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_generate_response_with_all_params(self, async_client: AsyncMillionways) -> None:
         chat_stream = await async_client.chat_stream.generate_response(
@@ -157,7 +159,7 @@ class TestAsyncChatStream:
         )
         assert_matches_type(ChatStreamGenerateResponseResponse, chat_stream, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_generate_response(self, async_client: AsyncMillionways) -> None:
         response = await async_client.chat_stream.with_raw_response.generate_response(
@@ -169,7 +171,7 @@ class TestAsyncChatStream:
         chat_stream = await response.parse()
         assert_matches_type(ChatStreamGenerateResponseResponse, chat_stream, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_generate_response(self, async_client: AsyncMillionways) -> None:
         async with async_client.chat_stream.with_streaming_response.generate_response(

@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestSalesAssistant:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_generate_insights(self, client: Millionways) -> None:
         sales_assistant = client.sales_assistant.generate_insights(
@@ -25,7 +25,7 @@ class TestSalesAssistant:
         )
         assert_matches_type(SalesAssistantGenerateInsightsResponse, sales_assistant, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_generate_insights_with_all_params(self, client: Millionways) -> None:
         sales_assistant = client.sales_assistant.generate_insights(
@@ -35,7 +35,7 @@ class TestSalesAssistant:
         )
         assert_matches_type(SalesAssistantGenerateInsightsResponse, sales_assistant, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_generate_insights(self, client: Millionways) -> None:
         response = client.sales_assistant.with_raw_response.generate_insights(
@@ -47,7 +47,7 @@ class TestSalesAssistant:
         sales_assistant = response.parse()
         assert_matches_type(SalesAssistantGenerateInsightsResponse, sales_assistant, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_generate_insights(self, client: Millionways) -> None:
         with client.sales_assistant.with_streaming_response.generate_insights(
@@ -63,9 +63,11 @@ class TestSalesAssistant:
 
 
 class TestAsyncSalesAssistant:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_generate_insights(self, async_client: AsyncMillionways) -> None:
         sales_assistant = await async_client.sales_assistant.generate_insights(
@@ -73,7 +75,7 @@ class TestAsyncSalesAssistant:
         )
         assert_matches_type(SalesAssistantGenerateInsightsResponse, sales_assistant, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_generate_insights_with_all_params(self, async_client: AsyncMillionways) -> None:
         sales_assistant = await async_client.sales_assistant.generate_insights(
@@ -83,7 +85,7 @@ class TestAsyncSalesAssistant:
         )
         assert_matches_type(SalesAssistantGenerateInsightsResponse, sales_assistant, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_generate_insights(self, async_client: AsyncMillionways) -> None:
         response = await async_client.sales_assistant.with_raw_response.generate_insights(
@@ -95,7 +97,7 @@ class TestAsyncSalesAssistant:
         sales_assistant = await response.parse()
         assert_matches_type(SalesAssistantGenerateInsightsResponse, sales_assistant, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_generate_insights(self, async_client: AsyncMillionways) -> None:
         async with async_client.sales_assistant.with_streaming_response.generate_insights(

@@ -19,7 +19,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestMentalHealthChatbot:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_generate_response(self, client: Millionways) -> None:
         mental_health_chatbot = client.mental_health_chatbot.generate_response(
@@ -27,7 +27,7 @@ class TestMentalHealthChatbot:
         )
         assert_matches_type(MentalHealthChatbotGenerateResponseResponse, mental_health_chatbot, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_generate_response_with_all_params(self, client: Millionways) -> None:
         mental_health_chatbot = client.mental_health_chatbot.generate_response(
@@ -74,7 +74,7 @@ class TestMentalHealthChatbot:
         )
         assert_matches_type(MentalHealthChatbotGenerateResponseResponse, mental_health_chatbot, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_generate_response(self, client: Millionways) -> None:
         response = client.mental_health_chatbot.with_raw_response.generate_response(
@@ -86,7 +86,7 @@ class TestMentalHealthChatbot:
         mental_health_chatbot = response.parse()
         assert_matches_type(MentalHealthChatbotGenerateResponseResponse, mental_health_chatbot, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_generate_response(self, client: Millionways) -> None:
         with client.mental_health_chatbot.with_streaming_response.generate_response(
@@ -102,9 +102,11 @@ class TestMentalHealthChatbot:
 
 
 class TestAsyncMentalHealthChatbot:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_generate_response(self, async_client: AsyncMillionways) -> None:
         mental_health_chatbot = await async_client.mental_health_chatbot.generate_response(
@@ -112,7 +114,7 @@ class TestAsyncMentalHealthChatbot:
         )
         assert_matches_type(MentalHealthChatbotGenerateResponseResponse, mental_health_chatbot, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_generate_response_with_all_params(self, async_client: AsyncMillionways) -> None:
         mental_health_chatbot = await async_client.mental_health_chatbot.generate_response(
@@ -159,7 +161,7 @@ class TestAsyncMentalHealthChatbot:
         )
         assert_matches_type(MentalHealthChatbotGenerateResponseResponse, mental_health_chatbot, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_generate_response(self, async_client: AsyncMillionways) -> None:
         response = await async_client.mental_health_chatbot.with_raw_response.generate_response(
@@ -171,7 +173,7 @@ class TestAsyncMentalHealthChatbot:
         mental_health_chatbot = await response.parse()
         assert_matches_type(MentalHealthChatbotGenerateResponseResponse, mental_health_chatbot, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_generate_response(self, async_client: AsyncMillionways) -> None:
         async with async_client.mental_health_chatbot.with_streaming_response.generate_response(

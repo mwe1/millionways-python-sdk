@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestCreateUser:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Millionways) -> None:
         create_user = client.create_user.create(
@@ -25,7 +25,7 @@ class TestCreateUser:
         )
         assert_matches_type(CreateUserCreateResponse, create_user, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Millionways) -> None:
         response = client.create_user.with_raw_response.create(
@@ -37,7 +37,7 @@ class TestCreateUser:
         create_user = response.parse()
         assert_matches_type(CreateUserCreateResponse, create_user, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Millionways) -> None:
         with client.create_user.with_streaming_response.create(
@@ -53,9 +53,11 @@ class TestCreateUser:
 
 
 class TestAsyncCreateUser:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncMillionways) -> None:
         create_user = await async_client.create_user.create(
@@ -63,7 +65,7 @@ class TestAsyncCreateUser:
         )
         assert_matches_type(CreateUserCreateResponse, create_user, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncMillionways) -> None:
         response = await async_client.create_user.with_raw_response.create(
@@ -75,7 +77,7 @@ class TestAsyncCreateUser:
         create_user = await response.parse()
         assert_matches_type(CreateUserCreateResponse, create_user, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncMillionways) -> None:
         async with async_client.create_user.with_streaming_response.create(
